@@ -1,32 +1,26 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Almarai, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const supreme = localFont({
-  src: [
-    {
-      path: "../../public/fonts/Supreme-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Supreme-Medium.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Supreme-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-supreme",
+const almarai = Almarai({
+  subsets: ["arabic"],
+  weight: ["300", "400", "700", "800"],
+  variable: "--font-almarai",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+  variable: "--font-instrument-serif",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Ram - Portfolio",
-  description: "Full Stack Developer & Entrepreneur building innovative online businesses with cutting-edge technologies",
+  title: "Ram — Cinematic Portfolio",
+  description:
+    "Ram is a full-stack developer, AI builder, and PEI Web Agency founder creating useful web and mobile products.",
 };
 
 export default function RootLayout({
@@ -36,9 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${supreme.variable} antialiased font-sans`}
-      >
+      <body className={`${almarai.variable} ${instrumentSerif.variable} antialiased`}>
         {children}
       </body>
     </html>
