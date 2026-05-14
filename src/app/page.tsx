@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Fragment, useRef } from "react";
 import {
   ArrowRight,
@@ -21,6 +22,7 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
+import { fieldNotes } from "@/lib/field-notes";
 
 const PRIMARY_TEXT = "#E1E0CC";
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
@@ -29,6 +31,7 @@ const navItems = [
   { label: "Story", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
+  { label: "Field Notes", href: "/field-notes" },
   { label: "Github", href: "https://github.com/Bram-cat" },
   { label: "Contact", href: "mailto:vsbharaniram5@gmail.com" },
 ];
@@ -338,6 +341,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
 }
 
 export default function Home() {
+  const latestNote = fieldNotes[0];
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -570,6 +574,70 @@ export default function Home() {
                 <Mail className="h-4 w-4 text-primary" />
               </span>
             </a>
+          </motion.div>
+        </div>
+      </section>
+
+      <section id="field-notes" className="relative overflow-hidden bg-black px-4 py-20 sm:px-6 md:py-28">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(222,219,200,0.13),transparent_38%)]" />
+        <div className="relative mx-auto max-w-7xl">
+          <motion.div
+            className="overflow-hidden rounded-[2rem] border border-primary/10 bg-[#101010] p-5 shadow-2xl shadow-black/40 sm:p-7 md:p-8"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.75, ease: EASE_OUT }}
+          >
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+              <div className="flex flex-col justify-between rounded-[1.7rem] border border-primary/10 bg-black/30 p-5 md:p-7">
+                <div>
+                  <div className="flex items-center gap-2 text-primary">
+                    <Sparkles className="h-4 w-4" />
+                    <span className="text-xs uppercase tracking-[0.28em]">Field Notes</span>
+                  </div>
+                  <h2 className="mt-6 max-w-xl text-4xl font-normal leading-[0.92] tracking-[-0.05em] text-[#E1E0CC] sm:text-5xl md:text-6xl">
+                    Writing from the edge of building with agents.
+                  </h2>
+                  <p className="mt-5 max-w-lg text-sm leading-[1.55] text-gray-400">
+                    A more personal tab for technical notes, experiments, and honest reflections on the tools I actually enjoy steering.
+                  </p>
+                </div>
+                <Link
+                  href="/field-notes"
+                  className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-primary/15 px-5 py-3 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-black"
+                >
+                  Open Field Notes <ExternalLink className="h-4 w-4" />
+                </Link>
+              </div>
+
+              <Link
+                href={`/field-notes/${latestNote.slug}`}
+                className="group relative min-h-[430px] overflow-hidden rounded-[1.7rem] border border-primary/10 bg-black p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 sm:p-6"
+              >
+                <Image
+                  src={latestNote.image}
+                  alt={latestNote.imageAlt}
+                  fill
+                  className="object-cover opacity-65 transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/45 to-black/95" />
+                <div className="noise-overlay absolute inset-0 opacity-[0.18] mix-blend-overlay" />
+                <div className="relative z-10 flex h-full flex-col justify-end pt-52">
+                  <div className="mb-3 flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.26em] text-primary/70">
+                    <span>{latestNote.eyebrow}</span>
+                    <span>{latestNote.date}</span>
+                    <span>{latestNote.readTime}</span>
+                  </div>
+                  <h3 className="max-w-2xl text-4xl font-normal leading-none tracking-[-0.05em] text-[#E1E0CC] sm:text-5xl">
+                    {latestNote.title}
+                  </h3>
+                  <p className="mt-4 max-w-2xl text-sm leading-[1.55] text-gray-400">{latestNote.excerpt}</p>
+                  <span className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-bold text-primary transition-colors group-hover:text-[#E1E0CC]">
+                    Read the first note <ArrowRight className="h-4 w-4 -rotate-45" />
+                  </span>
+                </div>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
