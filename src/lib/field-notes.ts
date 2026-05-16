@@ -1,5 +1,19 @@
 export const fieldNotes = [
   {
+    slug: "pi-and-jmux",
+    title: "Pi and jmux",
+    subtitle:
+      "Why a terminal-native cockpit plus a programmable agent harness feels like an underrated path for parallel coding agents.",
+    date: "May 2026",
+    readTime: "4 min read",
+    eyebrow: "Agentic coding",
+    tags: ["Pi", "jmux", "Coding agents", "Terminal workflow"],
+    excerpt:
+      "Pi plus jmux feels like one of those setups people will rediscover later and ask why we were not already working this way: parallel agents, real terminal visibility, code intelligence, browser automation, and durable memory in one harness.",
+    image: "/field-notes-pi-jmux.png",
+    imageAlt: "Terminal-native agent cockpit with Pi and jmux dashboards",
+  },
+  {
     slug: "obsidian-and-pi",
     title: "Obsidian and Pi",
     subtitle:

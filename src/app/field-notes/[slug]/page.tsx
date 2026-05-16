@@ -15,8 +15,18 @@ export default async function FieldNotePage({ params }: { params: Promise<{ slug
   if (!note) notFound();
 
   const paragraphs =
-    note.slug === "obsidian-and-pi"
+    note.slug === "pi-and-jmux"
       ? [
+          "Pi plus jmux might be the most underrated agent workflow I have touched. Not because it is flashy, but because it gets the shape of agent work right.",
+          "Most AI coding tools still feel like one assistant inside one chat box. Useful, but cramped. The moment real work starts, the needs change. You need parallel sessions. You need isolated workspaces. You need visibility into which agent is working, stuck, done, or waiting for review. You need browser automation, codebase memory, web context, local docs, durable notes, and a harness that can actually use all of it.",
+          "That is where jmux clicked for me. It gives the terminal a cockpit for running coding agents in parallel: sessions, panes, diffs, attention flags, issue and merge-request context, and worktree-native workflows without turning the terminal into a bloated IDE.",
+          "Then Pi makes the harness programmable. My current setup has Contextro for codebase search, call graphs, impact analysis, docs, memory, and git history. It has Agentyc for deterministic Chrome automation. It has Crawl4AI for local web scraping. It has Obsidian-backed memory so the agent can learn my preferences and keep the workspace editable. It has custom skills for review, shipping, QA, design, writing, and workflow automation.",
+          "That combination feels different from an AI chatbot that can run commands. It feels more like a personal agent operating system. jmux handles the parallel terminal workspace. Pi handles the agent harness. Extensions turn the whole thing into something that adapts to how I actually work.",
+          "I think this category is still under-recognized. A lot of attention goes to the idea of one giant AI IDE, but I am increasingly convinced the more interesting path is a terminal-native cockpit where many focused agents work in parallel, with memory, browser control, code intelligence, and project-specific tools wired directly into the loop.",
+          "Pi plus jmux feels like one of those setups people will rediscover later and say: wait, why were we not doing it this way already?",
+        ]
+      : note.slug === "obsidian-and-pi"
+        ? [
           "Obsidian is where my long-term thinking lives. It is not polished like a public blog, and that is the point. It holds half-formed ideas, school notes, project context, preferences, decisions, and the small bits of personal operating system that are easy to forget but expensive to reconstruct.",
           "Pi changes what that vault can do. A normal notes app stores knowledge. Pi can read it, follow the links, understand the surrounding project, and use it while actually doing work. That turns Obsidian from an archive into a working memory layer.",
           "The setup feels simple on the surface: keep an index, keep project notes, keep a personal AI profile, and tell the agent to check the vault before guessing. But the effect is bigger than the mechanics. I do not have to re-explain my preferences every session. I can point Pi at the notes and let it rebuild context from something I control.",
