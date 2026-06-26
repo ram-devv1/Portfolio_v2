@@ -7,7 +7,7 @@ import { ExternalLink } from "lucide-react";
 
 export function Projects() {
   return (
-    <section id="projects" className="max-w-5xl mx-auto px-4 py-24 sm:px-6">
+    <section id="projects" className="max-w-5xl mx-auto px-4 py-16 sm:py-24 sm:px-6">
       <div className="reveal-scroll mb-12">
         <DecryptedText
           text="projects"

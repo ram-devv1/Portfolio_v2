@@ -20,12 +20,12 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className="relative py-16">
+      <footer className="relative py-12 sm:py-16">
         {/* Accent gradient bar */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-48 bg-gradient-to-r from-transparent via-[#ffb000]/60 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-32 sm:w-48 bg-gradient-to-r from-transparent via-[#ffb000]/60 to-transparent" />
 
-        <div className="flex flex-col items-center gap-6">
-          <div className="flex items-center gap-6">
+        <div className="flex flex-col items-center gap-5 sm:gap-6">
+          <div className="flex items-center gap-4 sm:gap-6">
             <a
               href="https://github.com/Bram-cat"
               target="_blank"

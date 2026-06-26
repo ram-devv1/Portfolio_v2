@@ -28,16 +28,16 @@ export function Header() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 pointer-events-none">
-        <h1 className="text-[20vw] md:text-[15vw] lg:text-[12vw] font-bold tracking-[-0.05em] leading-none text-[#e0e0e0]">
+        <h1 className="text-[22vw] sm:text-[20vw] md:text-[15vw] lg:text-[12vw] font-bold tracking-[-0.05em] leading-none text-[#e0e0e0]">
           {sidebarData.name}.
         </h1>
 
-        <p className="mt-6 max-w-2xl text-sm md:text-xl text-[#ffb000] tracking-wide leading-relaxed">
+        <p className="mt-4 sm:mt-6 max-w-[90vw] sm:max-w-2xl text-xs sm:text-sm md:text-xl text-[#ffb000] tracking-wide leading-relaxed px-2">
           {sidebarData.tagline}
         </p>
 
         {/* Buttons */}
-        <div className="mt-10 flex flex-wrap items-center gap-4 pointer-events-auto">
+        <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4 pointer-events-auto">
           <a href="#posts">
             <TextPressure
               text="posts"

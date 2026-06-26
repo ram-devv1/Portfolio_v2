@@ -12,7 +12,7 @@ export function Posts() {
 
   return (
     <>
-      <section id="posts" className="max-w-3xl mx-auto px-4 py-24 sm:px-6">
+      <section id="posts" className="max-w-3xl mx-auto px-4 py-16 sm:py-24 sm:px-6">
         <div className="reveal-scroll mb-12">
           <DecryptedText
             text="posts"
@@ -49,7 +49,7 @@ export function Posts() {
                     maxIterations={6}
                     animateOn="hover"
                     revealDirection="start"
-                    className="text-[13px] font-medium group-hover:text-primary transition-colors"
+                    className="text-[12px] sm:text-[13px] font-medium group-hover:text-primary transition-colors leading-snug"
                     encryptedClassName="text-muted-foreground/35"
                   />
                 </div>
@@ -106,7 +106,7 @@ export function Posts() {
                 maxIterations={10}
                 animateOn="view"
                 revealDirection="start"
-                className="text-xl font-bold tracking-[-0.02em] text-[#e0e0e0] mb-4"
+                className="text-lg sm:text-xl font-bold tracking-[-0.02em] text-[#e0e0e0] mb-4 pr-8"
                 encryptedClassName="text-muted-foreground/30"
               />
 

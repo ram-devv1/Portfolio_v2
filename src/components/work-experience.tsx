@@ -5,7 +5,7 @@ import { workExperience } from "@/lib/data";
 
 export function WorkExperience() {
   return (
-    <section id="work" className="max-w-3xl mx-auto px-4 py-24 sm:px-6">
+    <section id="work" className="max-w-3xl mx-auto px-4 py-16 sm:py-24 sm:px-6">
       <div className="reveal-scroll mb-12">
         <DecryptedText
           text="work_experience"
