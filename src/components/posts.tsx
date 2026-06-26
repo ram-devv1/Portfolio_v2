@@ -49,8 +49,8 @@ export function Posts() {
                     maxIterations={6}
                     animateOn="hover"
                     revealDirection="start"
-                    className="text-[13px] font-medium"
-                    encryptedClassName="text-primary/15"
+                    className="text-[13px] font-medium group-hover:text-primary transition-colors"
+                    encryptedClassName="text-muted-foreground/35"
                   />
                 </div>
                 <span className="text-[10px] text-muted-foreground/20 group-hover:text-primary/40 transition-colors shrink-0">
@@ -83,13 +83,13 @@ export function Posts() {
               {/* Close */}
               <button
                 onClick={() => setActivePost(null)}
-                className="absolute top-4 right-4 p-1.5 rounded-lg border border-primary/10 text-primary/40 hover:text-primary hover:border-primary/30 transition-colors"
+                className="absolute top-4 right-4 z-10 p-1.5 rounded-lg border border-primary/10 bg-card/90 backdrop-blur text-primary/40 hover:text-primary hover:border-primary/30 transition-colors"
               >
                 <X className="h-4 w-4" />
               </button>
 
               {/* Image placeholder */}
-              <div className="relative aspect-[16/9] rounded-lg overflow-hidden bg-[#0d0d0d] border border-primary/10 mb-6">
+              <div className="relative aspect-[16/9] rounded-lg overflow-hidden bg-[#0d0d0d] border border-primary/10 mt-2 mb-6">
                 <div className="flex h-full w-full items-center justify-center">
                   <span className="text-[10px] uppercase tracking-[0.2em] text-primary/10">
                     [post image — add screenshot]

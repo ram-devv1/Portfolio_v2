@@ -56,8 +56,8 @@ export function Projects() {
                   maxIterations={8}
                   animateOn="hover"
                   revealDirection="start"
-                  className="text-sm font-bold tracking-[-0.02em]"
-                  encryptedClassName="text-primary/20"
+                  className="text-sm font-bold tracking-[-0.02em] group-hover:text-primary transition-colors"
+                  encryptedClassName="text-muted-foreground/40"
                 />
                 <ExternalLink className="h-3.5 w-3.5 shrink-0 mt-0.5 text-primary/20 group-hover:text-primary/60 transition-colors" />
               </div>

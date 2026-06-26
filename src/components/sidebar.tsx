@@ -1,6 +1,5 @@
 "use client";
 
-import DecryptedText from "@/components/DecryptedText";
 import Dither from "@/components/Dither";
 import { sidebarData } from "@/lib/data";
 
@@ -22,32 +21,20 @@ export function Header() {
         />
       </div>
 
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]" />
-      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-transparent via-transparent to-[#0a0a0a]/40" />
+      {/* Gradient overlays — pointer-events-none so Dither gets mouse */}
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]" />
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-t from-transparent via-transparent to-[#0a0a0a]/40" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-4">
-        <DecryptedText
-          text={sidebarData.name}
-          speed={80}
-          maxIterations={15}
-          animateOn="view"
-          revealDirection="center"
-          className="text-[16vw] md:text-[12vw] lg:text-[10vw] font-bold tracking-[-0.05em] leading-none"
-          encryptedClassName="text-primary/30"
-        />
+      <div className="relative z-10 flex flex-col items-center text-center px-4 pointer-events-none">
+        <h1 className="text-[16vw] md:text-[12vw] lg:text-[10vw] font-bold tracking-[-0.05em] leading-none text-foreground">
+          {sidebarData.name}
+        </h1>
 
         <div className="mt-6 max-w-xl">
-          <DecryptedText
-            text={sidebarData.tagline}
-            speed={50}
-            maxIterations={8}
-            animateOn="view"
-            revealDirection="center"
-            className="text-sm md:text-base text-primary/50 tracking-wide"
-            encryptedClassName="text-primary/15"
-          />
+          <p className="text-sm md:text-base text-primary/80 tracking-wide">
+            {sidebarData.tagline}
+          </p>
         </div>
 
         {/* Scroll hint */}
