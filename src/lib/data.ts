@@ -40,7 +40,7 @@ export const projects = [
     slug: "artystic",
     title: "Artystic",
     line: "A published design-polish skill and editorial website — makes interfaces feel authored instead of templated. Ships as an npm CLI, Next.js site, and cross-agent Pi skill.",
-    image: "/lovelock.png",
+    image: "/artystic.png",
     imageAlt: "Artystic editorial design system",
     href: "https://github.com/Bram-cat/artyistic",
   },

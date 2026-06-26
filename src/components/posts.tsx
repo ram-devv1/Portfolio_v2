@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import DecryptedText from "@/components/DecryptedText";
 import { posts } from "@/lib/data";
-import { BarChart3, X } from "lucide-react";
+import { BarChart3, X, ExternalLink } from "lucide-react";
 
 export function Posts() {
   const [activePost, setActivePost] = useState<number | null>(null);
@@ -83,19 +83,10 @@ export function Posts() {
               {/* Close */}
               <button
                 onClick={() => setActivePost(null)}
-                className="absolute top-4 right-4 z-10 p-1.5 rounded-lg border border-primary/10 bg-card/90 backdrop-blur text-primary/40 hover:text-primary hover:border-primary/30 transition-colors"
+                className="absolute top-4 right-4 z-10 p-1.5 rounded-lg border border-white/5 bg-card/90 backdrop-blur text-muted-foreground/30 hover:text-[#ffb000] hover:border-[#ffb000]/30 transition-colors"
               >
                 <X className="h-4 w-4" />
               </button>
-
-              {/* Image placeholder */}
-              <div className="relative aspect-[16/9] rounded-lg overflow-hidden bg-[#0d0d0d] border border-primary/10 mt-2 mb-6">
-                <div className="flex h-full w-full items-center justify-center">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-primary/10">
-                    [post image — add screenshot]
-                  </span>
-                </div>
-              </div>
 
               {/* Meta */}
               <div className="flex items-center gap-3 mb-3">
@@ -124,16 +115,26 @@ export function Posts() {
                 {post.body}
               </p>
 
-              {/* Tags */}
-              <div className="mt-6 flex flex-wrap gap-1.5">
-                {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[10px] uppercase tracking-[0.15em] text-primary/40 border border-primary/10 rounded px-2 py-1"
-                  >
-                    #{tag}
-                  </span>
-                ))}
+              {/* Tags + link */}
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+                <div className="flex flex-wrap gap-1.5">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground/40 border border-white/5 rounded px-2 py-1"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href="https://www.linkedin.com/in/brvs-app-developer/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.15em] text-[#00d4ff]/50 hover:text-[#00d4ff] transition-colors"
+                >
+                  LinkedIn <ExternalLink className="h-3 w-3" />
+                </a>
               </div>
             </motion.div>
           </motion.div>

@@ -10,21 +10,25 @@ export default function Home() {
     <main>
       <Header />
 
-      {/* Laser flow — bridges hero into work experience */}
-      <div className="relative -mt-24 z-20 h-40">
-        <LaserFlow
-          color="#ffb000"
-          wispDensity={4}
-          flowSpeed={0.5}
-          flowStrength={0.6}
-          fogIntensity={0.3}
-          className="h-full"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]" />
+      {/* Laser beam — runs from hero through work to projects */}
+      <div className="relative">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <LaserFlow
+            color="#ffb000"
+            wispDensity={3}
+            flowSpeed={0.3}
+            flowStrength={0.5}
+            fogIntensity={0.25}
+            className="h-full"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 via-transparent to-[#0a0a0a]/80" />
+        </div>
+        <div className="relative z-10">
+          <WorkExperience />
+          <Projects />
+        </div>
       </div>
 
-      <WorkExperience />
-      <Projects />
       <Posts />
 
       <footer className="relative py-16">
