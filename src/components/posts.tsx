@@ -106,7 +106,8 @@ export function Posts() {
                 maxIterations={10}
                 animateOn="view"
                 revealDirection="start"
-                className="text-base sm:text-xl font-bold tracking-[-0.02em] text-[#e0e0e0] mb-4 pr-8 leading-snug break-words"
+                parentClassName="text-base sm:text-xl font-bold tracking-[-0.02em] leading-snug mb-4 pr-8 break-words"
+                className="text-[#e0e0e0]"
                 encryptedClassName="text-muted-foreground/30"
               />
 
