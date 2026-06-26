@@ -1,109 +1,64 @@
 "use client";
 
-import Image from "next/image";
-import { ExternalLink } from "lucide-react";
+import DecryptedText from "@/components/DecryptedText";
+import Dither from "@/components/Dither";
 import { sidebarData } from "@/lib/data";
-import Noise from "@/components/Noise";
 
-export function Nav() {
+export function Header() {
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-[#05050a]/72 py-5 font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.24em] text-white/45 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <a href="#top" className="flex items-center gap-2 hover:text-[#c6a9ff] transition-colors">
-          <span className="text-base font-bold tracking-[-0.04em]" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}>
-            Ram
-          </span>
-          <span className="hidden sm:inline text-white/30">/ dev</span>
-        </a>
-        <nav className="flex items-center gap-5">
-          <a href="#work" className="hover:text-[#c6a9ff] transition-colors">Work</a>
-          <a href="#projects" className="hover:text-[#c6a9ff] transition-colors">Projects</a>
-          <a href="#posts" className="hover:text-[#c6a9ff] transition-colors">Posts</a>
-          <a href="https://github.com/Bram-cat" target="_blank" rel="noreferrer" className="hover:text-[#c6a9ff] transition-colors">
-            GitHub
-          </a>
-        </nav>
+    <header className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
+      {/* Dither background */}
+      <div className="absolute inset-0 z-0">
+        <Dither
+          waveSpeed={0.04}
+          waveFrequency={2.5}
+          waveAmplitude={0.25}
+          waveColor={[0.15, 0.55, 0.15]}
+          colorNum={3}
+          pixelSize={3}
+          disableAnimation={false}
+          enableMouseInteraction={true}
+          mouseRadius={0.8}
+        />
+      </div>
+
+      {/* Gradient overlays */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-transparent via-transparent to-[#0a0a0a]/40" />
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center text-center px-4">
+        <DecryptedText
+          text={sidebarData.name}
+          speed={80}
+          maxIterations={15}
+          animateOn="view"
+          revealDirection="center"
+          className="text-[16vw] md:text-[12vw] lg:text-[10vw] font-bold tracking-[-0.05em] leading-none"
+          encryptedClassName="text-primary/30"
+        />
+
+        <div className="mt-6 max-w-xl">
+          <DecryptedText
+            text={sidebarData.tagline}
+            speed={50}
+            maxIterations={8}
+            animateOn="view"
+            revealDirection="center"
+            className="text-sm md:text-base text-primary/50 tracking-wide"
+            encryptedClassName="text-primary/15"
+          />
+        </div>
+
+        {/* Scroll hint */}
+        <div className="mt-16 flex flex-col items-center gap-2 opacity-40">
+          <span className="text-[10px] uppercase tracking-[0.3em] text-primary/40">Scroll</span>
+          <svg width="16" height="24" viewBox="0 0 16 24" fill="none" className="animate-bounce">
+            <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" strokeWidth="1" className="text-primary/40" />
+            <rect x="7" y="5" width="2" height="6" rx="1" fill="currentColor" className="text-primary/40" />
+          </svg>
+        </div>
       </div>
     </header>
-  );
-}
-
-export function PageHeader() {
-  return (
-    <section id="top" className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[0.72fr_1.28fr] lg:px-8 lg:py-24">
-      <div className="space-y-8 lg:sticky lg:top-28 lg:self-start">
-        <div className="space-y-5">
-          <p className="kicker" style={{ animation: "reveal-up 0.6s both" }}>
-            Developer · agent-native tools
-          </p>
-          <h1
-            className="max-w-4xl text-6xl font-semibold leading-[0.86] tracking-[-0.105em] text-white sm:text-7xl lg:text-[7rem]"
-            style={{ animation: "reveal-up 0.6s 0.1s both" }}
-          >
-            {sidebarData.name}
-            <span className="serif-hit text-[#c6a9ff]">.</span>
-          </h1>
-          <p
-            className="max-w-xl text-lg leading-8 text-white/68"
-            style={{ animation: "reveal-up 0.6s 0.2s both" }}
-          >
-            {sidebarData.tagline}
-          </p>
-        </div>
-
-        <div
-          className="flex flex-wrap gap-3"
-          style={{ animation: "reveal-up 0.6s 0.3s both" }}
-        >
-          <a
-            href="#projects"
-            className="pixel-button inline-flex items-center gap-2 border border-[#9b5cff]/60 px-5 py-3 text-sm font-semibold text-[#c6a9ff]"
-          >
-            <span className="pixel-text">
-              <span className="pixel-text__sizer">View projects</span>
-              <span className="pixel-text__label">View projects</span>
-            </span>
-          </a>
-          <a
-            href="https://github.com/Bram-cat"
-            target="_blank"
-            rel="noreferrer"
-            className="pixel-button inline-flex items-center gap-2 border border-white/12 px-5 py-3 text-sm font-semibold text-white/72"
-          >
-            <span className="pixel-text">
-              <span className="pixel-text__sizer">GitHub</span>
-              <span className="pixel-text__label">GitHub</span>
-            </span>
-            <ExternalLink className="h-3.5 w-3.5" />
-          </a>
-        </div>
-
-        <div
-          className="border-t border-white/10 pt-5"
-          style={{ animation: "reveal-up 0.6s 0.4s both" }}
-        >
-          <p className="max-w-lg text-sm leading-7 text-white/54">
-            Currently: {sidebarData.current.join(" · ")}
-          </p>
-        </div>
-      </div>
-
-      {/* Hero visual plate with dither */}
-      <div
-        className="plate rounded-lg aspect-[4/3] lg:aspect-auto lg:min-h-[520px] flex items-center justify-center relative overflow-hidden"
-        style={{ animation: "reveal-up 0.6s 0.3s both" }}
-      >
-        <Noise
-          patternSize={200}
-          patternScaleX={1.2}
-          patternScaleY={1.2}
-          patternRefreshInterval={3}
-          patternAlpha={18}
-        />
-        <p className="relative z-10 font-[var(--font-mono)] text-xs uppercase tracking-[0.22em] text-white/20">
-          Hero plate — add your image
-        </p>
-      </div>
-    </section>
   );
 }

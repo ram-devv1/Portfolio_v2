@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -15,18 +9,9 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: "italic",
-  variable: "--font-instrument-serif",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: "Ram — Developer",
-  description:
-    "Ram is a developer building agent-native tools and interfaces with taste.",
+  description: "Ram is a developer building agent-native tools and interfaces with taste.",
 };
 
 export default function RootLayout({
@@ -36,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} antialiased`}
-      >
+      <body className={`${jetbrainsMono.variable} antialiased`}>
         {children}
       </body>
     </html>

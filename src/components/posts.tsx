@@ -1,79 +1,144 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import DecryptedText from "@/components/DecryptedText";
 import { posts } from "@/lib/data";
-import { BarChart3, ChevronDown } from "lucide-react";
+import { BarChart3, X } from "lucide-react";
 
 export function Posts() {
-  const [expanded, setExpanded] = useState<number | null>(null);
+  const [activePost, setActivePost] = useState<number | null>(null);
+  const post = activePost !== null ? posts.find((p) => p.id === activePost) : null;
 
   return (
-    <section id="posts" className="mx-auto max-w-7xl border-t border-white/10 px-4 py-20 sm:px-6 lg:px-8">
-      <div className="grid gap-10 lg:grid-cols-[0.38fr_0.62fr] mb-16">
-        <div className="reveal lg:sticky lg:top-28 lg:self-start">
-          <p className="kicker">Posts</p>
-          <h2 className="mt-4 text-4xl font-semibold leading-none tracking-[-0.075em] text-white sm:text-5xl">
-            Writing from <span className="serif-hit text-[#ff9a6f]">LinkedIn.</span>
-          </h2>
+    <>
+      <section id="posts" className="max-w-3xl mx-auto px-4 py-24 sm:px-6">
+        <div className="reveal-scroll mb-12">
+          <DecryptedText
+            text="posts"
+            speed={40}
+            maxIterations={8}
+            animateOn="view"
+            revealDirection="start"
+            className="text-xs uppercase tracking-[0.3em] text-primary/50"
+            encryptedClassName="text-primary/15"
+          />
         </div>
-        <div className="reveal">
-          <p className="text-[15px] leading-7 text-white/54 max-w-lg">
-            Thoughts on agent tooling, workflow, and building with taste. Originally posted on LinkedIn.
-          </p>
-        </div>
-      </div>
 
-      <div className="space-y-3">
-        {posts.map((post) => {
-          const isOpen = expanded === post.id;
-          return (
-            <article key={post.id} className="reveal border border-white/10 rounded-lg bg-white/[0.015] transition-colors hover:border-white/20">
-              <button
-                onClick={() => setExpanded(isOpen ? null : post.id)}
-                className="flex w-full items-start gap-5 p-5 text-left"
-              >
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="font-[var(--font-mono)] text-[0.62rem] uppercase tracking-[0.22em] text-[#ff9a6f]/70">
-                      {post.date}
+        <div className="space-y-2">
+          {posts.map((p, i) => (
+            <button
+              key={p.id}
+              onClick={() => setActivePost(p.id)}
+              className={`reveal-scroll reveal-scroll-delay-${i + 1} w-full text-left border border-primary/10 rounded-lg bg-card/50 p-4 transition-all duration-200 hover:border-primary/25 hover:bg-card group`}
+            >
+              <div className="flex items-center justify-between gap-4">
+                <div className="min-w-0">
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-primary/40">
+                      {p.date}
                     </span>
-                    <span className="flex items-center gap-1 font-[var(--font-mono)] text-[0.62rem] text-white/25">
+                    <span className="flex items-center gap-1 text-[10px] text-muted-foreground/30">
                       <BarChart3 className="h-3 w-3" />
-                      {post.impressions}
+                      {p.impressions}
                     </span>
                   </div>
-                  <h3 className="text-[15px] font-semibold text-white leading-snug">
-                    {post.title}
-                  </h3>
+                  <DecryptedText
+                    text={p.title}
+                    speed={50}
+                    maxIterations={6}
+                    animateOn="hover"
+                    revealDirection="start"
+                    className="text-[13px] font-medium"
+                    encryptedClassName="text-primary/15"
+                  />
                 </div>
-                <ChevronDown
-                  className={`mt-1 h-4 w-4 shrink-0 text-white/30 transition-transform duration-200 ${
-                    isOpen ? "rotate-180" : ""
-                  }`}
-                />
+                <span className="text-[10px] text-muted-foreground/20 group-hover:text-primary/40 transition-colors shrink-0">
+                  Read →
+                </span>
+              </div>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* Fullscreen post modal */}
+      <AnimatePresence>
+        {post && (
+          <motion.div
+            className="modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActivePost(null)}
+          >
+            <motion.div
+              className="modal-content"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close */}
+              <button
+                onClick={() => setActivePost(null)}
+                className="absolute top-4 right-4 p-1.5 rounded-lg border border-primary/10 text-primary/40 hover:text-primary hover:border-primary/30 transition-colors"
+              >
+                <X className="h-4 w-4" />
               </button>
 
-              {isOpen && (
-                <div className="border-t border-white/10 px-5 pb-6 pt-5">
-                  <p className="text-[14px] leading-7 text-white/58 whitespace-pre-line">
-                    {post.body}
-                  </p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-[var(--font-mono)] text-[0.6rem] uppercase tracking-[0.18em] text-[#c6a9ff]/60 border border-white/10 rounded px-2 py-1"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
+              {/* Image placeholder */}
+              <div className="relative aspect-[16/9] rounded-lg overflow-hidden bg-[#0d0d0d] border border-primary/10 mb-6">
+                <div className="flex h-full w-full items-center justify-center">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-primary/10">
+                    [post image — add screenshot]
+                  </span>
                 </div>
-              )}
-            </article>
-          );
-        })}
-      </div>
-    </section>
+              </div>
+
+              {/* Meta */}
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-primary/50">
+                  {post.date}
+                </span>
+                <span className="flex items-center gap-1 text-[10px] text-muted-foreground/40">
+                  <BarChart3 className="h-3 w-3" />
+                  {post.impressions} impressions
+                </span>
+              </div>
+
+              {/* Title */}
+              <DecryptedText
+                text={post.title}
+                speed={60}
+                maxIterations={10}
+                animateOn="view"
+                revealDirection="start"
+                className="text-lg font-bold tracking-[-0.02em] mb-4"
+                encryptedClassName="text-primary/15"
+              />
+
+              {/* Body */}
+              <p className="text-[13px] leading-7 text-muted-foreground whitespace-pre-line">
+                {post.body}
+              </p>
+
+              {/* Tags */}
+              <div className="mt-6 flex flex-wrap gap-1.5">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[10px] uppercase tracking-[0.15em] text-primary/40 border border-primary/10 rounded px-2 py-1"
+                  >
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

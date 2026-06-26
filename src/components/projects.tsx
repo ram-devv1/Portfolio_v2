@@ -1,67 +1,69 @@
 "use client";
 
 import Image from "next/image";
+import DecryptedText from "@/components/DecryptedText";
 import { projects } from "@/lib/data";
-import { ArrowUpRight } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 export function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-7xl border-t border-white/10 px-4 py-20 sm:px-6 lg:px-8">
-      <div className="grid gap-10 lg:grid-cols-[0.38fr_0.62fr] mb-16">
-        <div className="reveal lg:sticky lg:top-28 lg:self-start">
-          <p className="kicker">Projects</p>
-          <h2 className="mt-4 text-4xl font-semibold leading-none tracking-[-0.075em] text-white sm:text-5xl">
-            What I&rsquo;ve <span className="serif-hit text-[#ff9a6f]">built.</span>
-          </h2>
-        </div>
-        <div className="reveal">
-          <p className="text-[15px] leading-7 text-white/54 max-w-lg">
-            Image + one-liner. Each project opens its repo — no fluff.
-          </p>
-        </div>
+    <section id="projects" className="max-w-5xl mx-auto px-4 py-24 sm:px-6">
+      <div className="reveal-scroll mb-12">
+        <DecryptedText
+          text="projects"
+          speed={40}
+          maxIterations={8}
+          animateOn="view"
+          revealDirection="start"
+          className="text-xs uppercase tracking-[0.3em] text-primary/50"
+          encryptedClassName="text-primary/15"
+        />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        {projects.map((project) => (
+      <div className="grid gap-3 sm:grid-cols-2">
+        {projects.map((project, i) => (
           <a
             key={project.slug}
             href={project.href}
             target="_blank"
             rel="noreferrer"
-            className="reveal group plate rounded-lg overflow-hidden transition-all duration-300 hover:border-[#9b5cff]/40 hover:shadow-[0_34px_100px_-50px_rgba(155,92,255,0.42)]"
+            className={`reveal-scroll reveal-scroll-delay-${i + 1} group border border-primary/10 rounded-xl bg-card/50 overflow-hidden transition-all duration-300 hover:border-primary/30 hover:bg-card`}
           >
             {/* Image */}
-            <div className="relative aspect-[16/10] overflow-hidden bg-[#0a0a14]">
+            <div className="relative aspect-[16/9] overflow-hidden bg-[#0d0d0d]">
               {project.image ? (
                 <Image
                   src={project.image}
                   alt={project.imageAlt}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  className="object-cover opacity-60 transition-all duration-500 group-hover:opacity-90 group-hover:scale-[1.03]"
                 />
               ) : (
                 <div className="flex h-full w-full items-center justify-center">
-                  <span className="font-[var(--font-mono)] text-[0.6rem] uppercase tracking-[0.26em] text-white/20">
-                    {project.title} · add screenshot
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-primary/10">
+                    [screenshot]
                   </span>
                 </div>
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#05050a]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
             {/* Content */}
-            <div className="relative p-5">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <h3 className="text-lg font-semibold tracking-[-0.03em] text-white group-hover:text-[#c6a9ff] transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="mt-2 text-[13px] leading-relaxed text-white/48">
-                    {project.line}
-                  </p>
-                </div>
-                <ArrowUpRight className="h-4 w-4 shrink-0 text-white/20 group-hover:text-[#c6a9ff] transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            <div className="p-4">
+              <div className="flex items-start justify-between gap-2">
+                <DecryptedText
+                  text={project.title}
+                  speed={50}
+                  maxIterations={8}
+                  animateOn="hover"
+                  revealDirection="start"
+                  className="text-sm font-bold tracking-[-0.02em]"
+                  encryptedClassName="text-primary/20"
+                />
+                <ExternalLink className="h-3.5 w-3.5 shrink-0 mt-0.5 text-primary/20 group-hover:text-primary/60 transition-colors" />
               </div>
+              <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground/60">
+                {project.line}
+              </p>
             </div>
           </a>
         ))}
