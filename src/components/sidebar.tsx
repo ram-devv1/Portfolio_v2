@@ -1,7 +1,7 @@
 "use client";
 
 import Dither from "@/components/Dither";
-import TextPressure from "@/components/TextPressure";
+import StarBorder from "@/components/StarBorder";
 import { sidebarData } from "@/lib/data";
 
 export function Header() {
@@ -38,32 +38,24 @@ export function Header() {
 
         {/* Buttons */}
         <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4 pointer-events-auto">
-          <a href="#posts">
-            <TextPressure
-              text="posts"
-              flex={true}
-              stroke={true}
-              textColor="#e0e0e0"
-              strokeColor="#33ff33"
-              strokeWidth={0.5}
-              fontFamily="JetBrains Mono"
-              minFontSize={14}
-              className="!w-auto !min-w-[120px] h-12 rounded-lg border border-[#33ff33]/30 !bg-transparent hover:border-[#33ff33]/60 transition-colors cursor-pointer"
-            />
-          </a>
-          <a href="mailto:vsbharaniram5@gmail.com">
-            <TextPressure
-              text="contact"
-              flex={true}
-              stroke={true}
-              textColor="#e0e0e0"
-              strokeColor="#ffb000"
-              strokeWidth={0.5}
-              fontFamily="JetBrains Mono"
-              minFontSize={14}
-              className="!w-auto !min-w-[120px] h-12 rounded-lg border border-[#ffb000]/30 !bg-transparent hover:border-[#ffb000]/60 transition-colors cursor-pointer"
-            />
-          </a>
+          <StarBorder
+            as="a"
+            href="#posts"
+            color="#33ff33"
+            speed="5s"
+            className="min-w-[130px]"
+          >
+            posts
+          </StarBorder>
+          <StarBorder
+            as="a"
+            href="#contact"
+            color="#ffb000"
+            speed="5s"
+            className="min-w-[130px]"
+          >
+            contact
+          </StarBorder>
         </div>
       </div>
     </header>

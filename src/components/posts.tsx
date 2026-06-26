@@ -106,12 +106,12 @@ export function Posts() {
                 maxIterations={10}
                 animateOn="view"
                 revealDirection="start"
-                className="text-lg sm:text-xl font-bold tracking-[-0.02em] text-[#e0e0e0] mb-4 pr-8"
+                className="text-base sm:text-xl font-bold tracking-[-0.02em] text-[#e0e0e0] mb-4 pr-8 leading-snug break-words"
                 encryptedClassName="text-muted-foreground/30"
               />
 
               {/* Body */}
-              <p className="text-[15px] leading-8 text-[#c8c8c8] whitespace-pre-line">
+              <p className="text-[13.5px] sm:text-[15px] leading-7 sm:leading-8 text-[#c8c8c8] whitespace-pre-line break-words">
                 {post.body}
               </p>
 

@@ -20,7 +20,7 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className="relative py-12 sm:py-16">
+      <footer id="contact" className="relative scroll-mt-16 py-12 sm:py-16">
         {/* Accent gradient bar */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-32 sm:w-48 bg-gradient-to-r from-transparent via-[#ffb000]/60 to-transparent" />
 

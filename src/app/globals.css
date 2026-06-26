@@ -78,6 +78,80 @@
   to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
+/* ── STAR BORDER BUTTON (react bits) ── */
+.star-border-container {
+  display: inline-block;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: transparent;
+  cursor: pointer;
+}
+
+.border-gradient-bottom {
+  position: absolute;
+  width: 300%;
+  height: 50%;
+  opacity: 0.7;
+  bottom: -12px;
+  right: -250%;
+  border-radius: 50%;
+  animation: star-movement-bottom linear infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.border-gradient-top {
+  position: absolute;
+  opacity: 0.7;
+  width: 300%;
+  height: 50%;
+  top: -12px;
+  left: -250%;
+  border-radius: 50%;
+  animation: star-movement-top linear infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.star-inner-content {
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: var(--font-mono), "JetBrains Mono", monospace;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: lowercase;
+  text-align: center;
+  padding: 12px 22px;
+  border-radius: 10px;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.star-border-container:hover .star-inner-content {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+@media (min-width: 640px) {
+  .star-inner-content {
+    font-size: 14px;
+    padding: 14px 30px;
+  }
+}
+
+@keyframes star-movement-bottom {
+  0% { transform: translate(0%, 0%); opacity: 1; }
+  100% { transform: translate(-100%, 0%); opacity: 0; }
+}
+
+@keyframes star-movement-top {
+  0% { transform: translate(0%, 0%); opacity: 1; }
+  100% { transform: translate(100%, 0%); opacity: 0; }
+}
+
 /* ── MODAL ── */
 .modal-overlay {
   position: fixed;
