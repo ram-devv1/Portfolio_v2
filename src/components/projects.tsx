@@ -6,56 +6,63 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Projects() {
   return (
-    <section id="projects" className="py-16">
-      {/* Section header */}
-      <div className="mb-8 flex items-center gap-3">
-        <span className="text-primary/60 font-mono text-xs">~/projects</span>
-        <span className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-          Projects
-        </span>
+    <section id="projects" className="mx-auto max-w-7xl border-t border-white/10 px-4 py-20 sm:px-6 lg:px-8">
+      <div className="grid gap-10 lg:grid-cols-[0.38fr_0.62fr] mb-16">
+        <div className="reveal lg:sticky lg:top-28 lg:self-start">
+          <p className="kicker">Projects</p>
+          <h2 className="mt-4 text-4xl font-semibold leading-none tracking-[-0.075em] text-white sm:text-5xl">
+            What I&rsquo;ve <span className="serif-hit text-[#ff9a6f]">built.</span>
+          </h2>
+        </div>
+        <div className="reveal">
+          <p className="text-[15px] leading-7 text-white/54 max-w-lg">
+            Image + one-liner. Each project opens its repo — no fluff.
+          </p>
+        </div>
       </div>
 
-      {/* Grid */}
-      <div className="grid gap-3">
+      <div className="grid gap-4 sm:grid-cols-2">
         {projects.map((project) => (
           <a
             key={project.slug}
             href={project.href}
             target="_blank"
             rel="noreferrer"
-            className="group relative flex items-center gap-5 rounded-lg border border-primary/10 bg-card p-4 transition-all duration-200 hover:border-primary/30 hover:bg-[#0f0f0f]"
+            className="reveal group plate rounded-lg overflow-hidden transition-all duration-300 hover:border-[#9b5cff]/40 hover:shadow-[0_34px_100px_-50px_rgba(155,92,255,0.42)]"
           >
-            {/* Image placeholder */}
-            <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded border border-primary/10 bg-[#0a0a0a]">
+            {/* Image */}
+            <div className="relative aspect-[16/10] overflow-hidden bg-[#0a0a14]">
               {project.image ? (
                 <Image
                   src={project.image}
                   alt={project.imageAlt}
                   fill
-                  className="object-cover opacity-70 transition-opacity group-hover:opacity-100"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 />
               ) : (
-                <div className="flex h-full w-full items-center justify-center text-[9px] uppercase tracking-[0.18em] text-muted-foreground/30">
-                  img
+                <div className="flex h-full w-full items-center justify-center">
+                  <span className="font-[var(--font-mono)] text-[0.6rem] uppercase tracking-[0.26em] text-white/20">
+                    {project.title} · add screenshot
+                  </span>
                 </div>
               )}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#05050a]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
             {/* Content */}
-            <div className="min-w-0 flex-1">
-              <h3
-                data-text={project.title}
-                className="glitch-hover mb-0.5 text-sm font-bold text-foreground"
-              >
-                {project.title}
-              </h3>
-              <p className="text-[12px] leading-relaxed text-muted-foreground">
-                {project.line}
-              </p>
+            <div className="relative p-5">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-lg font-semibold tracking-[-0.03em] text-white group-hover:text-[#c6a9ff] transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 text-[13px] leading-relaxed text-white/48">
+                    {project.line}
+                  </p>
+                </div>
+                <ArrowUpRight className="h-4 w-4 shrink-0 text-white/20 group-hover:text-[#c6a9ff] transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </div>
             </div>
-
-            {/* Arrow */}
-            <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground/30 transition-all group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         ))}
       </div>
