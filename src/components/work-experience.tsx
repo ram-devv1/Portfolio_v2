@@ -18,7 +18,7 @@ export function WorkExperience() {
         />
       </div>
 
-      <div className="reveal-scroll reveal-scroll-delay-1 border border-primary/10 rounded-xl bg-card/50 p-6 sm:p-8">
+      <div className="reveal-scroll reveal-scroll-delay-1 border border-white/10 rounded-xl bg-[#141414] p-6 sm:p-8">
         <div className="flex items-center gap-2 mb-4">
           <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
           <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">

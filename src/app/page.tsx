@@ -2,7 +2,7 @@ import { Header } from "@/components/sidebar";
 import { WorkExperience } from "@/components/work-experience";
 import { Projects } from "@/components/projects";
 import { Posts } from "@/components/posts";
-import LaserFlow from "@/components/LaserFlow";
+import { LaserLine } from "@/components/laser-line";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 export default function Home() {
@@ -10,19 +10,9 @@ export default function Home() {
     <main>
       <Header />
 
-      {/* Laser beam — runs from hero through work to projects */}
+      {/* Laser beam — straight line from hero through work to projects */}
       <div className="relative">
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <LaserFlow
-            color="#ffb000"
-            wispDensity={3}
-            flowSpeed={0.3}
-            flowStrength={0.5}
-            fogIntensity={0.25}
-            className="h-full"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 via-transparent to-[#0a0a0a]/80" />
-        </div>
+        <LaserLine />
         <div className="relative z-10">
           <WorkExperience />
           <Projects />
