@@ -10,50 +10,59 @@ export default function Home() {
     <main>
       <Header />
 
-      {/* Laser flow transition */}
-      <LaserFlow
-        color="#ffb000"
-        wispDensity={3}
-        flowSpeed={0.4}
-        className="h-32 -mt-16 relative z-20"
-      />
+      {/* Laser flow — bridges hero into work experience */}
+      <div className="relative -mt-24 z-20 h-40">
+        <LaserFlow
+          color="#ffb000"
+          wispDensity={4}
+          flowSpeed={0.5}
+          flowStrength={0.6}
+          fogIntensity={0.3}
+          className="h-full"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]" />
+      </div>
 
       <WorkExperience />
       <Projects />
       <Posts />
 
-      <footer className="border-t border-white/10 py-12">
-        <div className="max-w-3xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground/40">
-            Built in the Bram-cat lab · © {new Date().getFullYear()}
-          </p>
-          <div className="flex items-center gap-5">
+      <footer className="relative py-16">
+        {/* Accent gradient bar */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-48 bg-gradient-to-r from-transparent via-[#ffb000]/60 to-transparent" />
+
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex items-center gap-6">
             <a
               href="https://github.com/Bram-cat"
               target="_blank"
               rel="noreferrer"
-              className="text-muted-foreground/40 hover:text-[#33ff33] transition-colors"
+              className="group relative p-3 rounded-full border border-white/5 text-muted-foreground/30 hover:text-[#33ff33] hover:border-[#33ff33]/30 hover:shadow-[0_0_20px_rgba(51,255,51,0.1)] transition-all duration-300"
               aria-label="GitHub"
             >
-              <Github className="h-4 w-4" />
+              <Github className="h-5 w-5" />
             </a>
             <a
               href="https://www.linkedin.com/in/brvs-app-developer/"
               target="_blank"
               rel="noreferrer"
-              className="text-muted-foreground/40 hover:text-[#00d4ff] transition-colors"
+              className="group relative p-3 rounded-full border border-white/5 text-muted-foreground/30 hover:text-[#00d4ff] hover:border-[#00d4ff]/30 hover:shadow-[0_0_20px_rgba(0,212,255,0.1)] transition-all duration-300"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-4 w-4" />
+              <Linkedin className="h-5 w-5" />
             </a>
             <a
               href="mailto:vsbharaniram5@gmail.com"
-              className="text-muted-foreground/40 hover:text-[#ffb000] transition-colors"
+              className="group relative p-3 rounded-full border border-white/5 text-muted-foreground/30 hover:text-[#ffb000] hover:border-[#ffb000]/30 hover:shadow-[0_0_20px_rgba(255,176,0,0.1)] transition-all duration-300"
               aria-label="Email"
             >
-              <Mail className="h-4 w-4" />
+              <Mail className="h-5 w-5" />
             </a>
           </div>
+
+          <p className="text-[10px] tracking-[0.3em] text-muted-foreground/15">
+            © {new Date().getFullYear()}
+          </p>
         </div>
       </footer>
     </main>
