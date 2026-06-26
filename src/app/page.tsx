@@ -2,7 +2,7 @@ import { Header } from "@/components/sidebar";
 import { WorkExperience } from "@/components/work-experience";
 import { Projects } from "@/components/projects";
 import { Posts } from "@/components/posts";
-import { LaserLine } from "@/components/laser-line";
+import { LaserLines } from "@/components/laser-line";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 export default function Home() {
@@ -10,16 +10,15 @@ export default function Home() {
     <main>
       <Header />
 
-      {/* Laser beam — straight line from hero through work to projects */}
+      {/* Lasers — from hero edges, converge at footer */}
       <div className="relative">
-        <LaserLine />
+        <LaserLines />
         <div className="relative z-10">
           <WorkExperience />
           <Projects />
+          <Posts />
         </div>
       </div>
-
-      <Posts />
 
       <footer className="relative py-16">
         {/* Accent gradient bar */}
