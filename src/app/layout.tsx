@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Almarai, Instrument_Serif } from "next/font/google";
+import { JetBrains_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const almarai = Almarai({
-  subsets: ["arabic"],
-  weight: ["300", "400", "700", "800"],
-  variable: "--font-almarai",
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-jetbrains-mono",
   display: "swap",
 });
 
@@ -18,9 +18,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Ram — Cinematic Portfolio",
+  title: "Ram — Developer",
   description:
-    "Ram is a full-stack developer, AI builder, and PEI Web Agency founder creating useful web and mobile products.",
+    "Ram is a developer building agent-native tools and interfaces with taste.",
 };
 
 export default function RootLayout({
@@ -30,7 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${almarai.variable} ${instrumentSerif.variable} antialiased`}>
+      <body
+        className={`${jetbrainsMono.variable} ${instrumentSerif.variable} antialiased`}
+      >
+        {/* CRT scanline overlay */}
+        <div className="crt-overlay" />
         {children}
       </body>
     </html>
