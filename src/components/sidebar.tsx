@@ -1,6 +1,7 @@
 "use client";
 
 import Dither from "@/components/Dither";
+import TextPressure from "@/components/TextPressure";
 import { sidebarData } from "@/lib/data";
 
 export function Header() {
@@ -21,29 +22,48 @@ export function Header() {
         />
       </div>
 
-      {/* Gradient overlays — pointer-events-none so Dither gets mouse */}
+      {/* Gradient overlays */}
       <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]" />
       <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-t from-transparent via-transparent to-[#0a0a0a]/40" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 pointer-events-none">
-        <h1 className="text-[16vw] md:text-[12vw] lg:text-[10vw] font-bold tracking-[-0.05em] leading-none text-foreground">
-          {sidebarData.name}
+        <h1 className="text-[20vw] md:text-[15vw] lg:text-[12vw] font-bold tracking-[-0.05em] leading-none text-[#e0e0e0]">
+          {sidebarData.name}.
         </h1>
 
-        <div className="mt-6 max-w-xl">
-          <p className="text-sm md:text-base text-primary/80 tracking-wide">
-            {sidebarData.tagline}
-          </p>
-        </div>
+        <p className="mt-6 max-w-2xl text-sm md:text-xl text-[#ffb000] tracking-wide leading-relaxed">
+          {sidebarData.tagline}
+        </p>
 
-        {/* Scroll hint */}
-        <div className="mt-16 flex flex-col items-center gap-2 opacity-40">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-primary/40">Scroll</span>
-          <svg width="16" height="24" viewBox="0 0 16 24" fill="none" className="animate-bounce">
-            <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" strokeWidth="1" className="text-primary/40" />
-            <rect x="7" y="5" width="2" height="6" rx="1" fill="currentColor" className="text-primary/40" />
-          </svg>
+        {/* Buttons */}
+        <div className="mt-10 flex flex-wrap items-center gap-4 pointer-events-auto">
+          <a href="#posts">
+            <TextPressure
+              text="posts"
+              flex={true}
+              stroke={true}
+              textColor="#e0e0e0"
+              strokeColor="#33ff33"
+              strokeWidth={0.5}
+              fontFamily="JetBrains Mono"
+              minFontSize={14}
+              className="!w-auto !min-w-[120px] h-12 rounded-lg border border-[#33ff33]/30 !bg-transparent hover:border-[#33ff33]/60 transition-colors cursor-pointer"
+            />
+          </a>
+          <a href="mailto:vsbharaniram5@gmail.com">
+            <TextPressure
+              text="contact"
+              flex={true}
+              stroke={true}
+              textColor="#e0e0e0"
+              strokeColor="#ffb000"
+              strokeWidth={0.5}
+              fontFamily="JetBrains Mono"
+              minFontSize={14}
+              className="!w-auto !min-w-[120px] h-12 rounded-lg border border-[#ffb000]/30 !bg-transparent hover:border-[#ffb000]/60 transition-colors cursor-pointer"
+            />
+          </a>
         </div>
       </div>
     </header>
